@@ -14,7 +14,7 @@ const args = yargs
     .option('port', {
         type: "number",
         description: "Port at which to start HTTP server",
-        default: 18080
+        default: process.env.PORT || 18080
     })
     .option('timeout', {
         type: "number",
