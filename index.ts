@@ -143,7 +143,12 @@ async function main() {
             }
 
         } else if(req.method === 'GET') {
-            const id = req.url.replace(/^\//, '') || v4()
+            const id = req.url.replace(/^\//, '')
+            if(!id) {
+                res.writeHead(400);
+                res.write(`No transfer id provided`)
+                res.end()
+            }
             if(!pendingTransfers[id]) {
                 res.writeHead(404);
                 res.write(`Transfer not found for /${id}`)
