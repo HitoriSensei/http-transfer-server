@@ -148,11 +148,13 @@ async function main() {
                 res.writeHead(400);
                 res.write(`No transfer id provided`)
                 res.end()
+                return
             }
             if(!pendingTransfers[id]) {
                 res.writeHead(404);
                 res.write(`Transfer not found for /${id}`)
                 res.end()
+                return
             }
 
             res.writeHead(200, { "Content-type": "application/octet-stream" });
